@@ -14,7 +14,7 @@ export default function App() {
        <View style={{flexDirection:"row", justifyContent:"space-between", marginTop:20}}>
          <TouchableOpacity><Ionicons name="arrow-back-sharp" size={35} color="white" /></TouchableOpacity>
          <Text style={{color:"white", fontSize:25, marginHorizontal:120}}>Menu</Text>
-         <TouchableOpacity><Entypo name="dots-three-vertical" size={35} color="white" /></TouchableOpacity>
+         <TouchableOpacity><Entypo name="menu" size={35} color="white" /></TouchableOpacity>
        </View>
         <Image style={{height:120, width:120,}}
          source={require("./assets/WingsLogo.png")}/>
