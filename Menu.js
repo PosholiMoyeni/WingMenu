@@ -1,18 +1,18 @@
-import { StyleSheet, Text, View, Image, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import {useState} from 'react'
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 export default function Menu({amount, image, name, totalPrice, setTotalPrice, ratings}) {
-  let price= amount;
+  let price = amount;
   const [items, setItems] = useState(0);
   function AddItems(){
     setItems(items + 1)
-    price=price + amount;
+    price = price + amount;
     setTotalPrice(totalPrice + amount);
   }
   function ReduceItems(){
     setItems(items - 1)
-    price=price - amount;
+    price = price - amount;
     setTotalPrice(totalPrice - amount);
   }
   return (
@@ -28,12 +28,16 @@ export default function Menu({amount, image, name, totalPrice, setTotalPrice, ra
            <FontAwesome name="star" size={15} color="#fbb330" />
             {ratings}
           </Text>
-          <Text style={{marginTop:10, color:"#979491", fontSize:22}}>Price: M{amount}</Text>
+          <Text style={{marginTop:10, color:"#979491", fontSize:17}}>Price: M{amount}</Text>
         </View> 
        <View style={{position:"relative", flexDirection:"column", margin:10}}>
-         <Button title="+" onPress={AddItems} />
+         <TouchableOpacity style={styles.ItemCount}>
+          <Ionicons name="add-outline" size={35} color="white" onPress={AddItems}/> 
+         </TouchableOpacity>
          <Text style={{color:"#979491"}}>{items} Items</Text>
-         <Button title="-" onPress={ReduceItems} />
+         <TouchableOpacity style={styles.ItemCount}>
+         <Ionicons name="remove-outline" size={35} color="white" onPress={ReduceItems}/>  
+         </TouchableOpacity>
       </View>
     </View>
   )
@@ -64,5 +68,11 @@ const styles = StyleSheet.create({
     color:"white",
     fontSize: 22,
     fontWeight: 'bold'
+  },
+  ItemCount:{
+    height:"39%",
+    width:"65%",
+    backgroundColor:"#353434",
+    borderRadius:5,
   }
 })
